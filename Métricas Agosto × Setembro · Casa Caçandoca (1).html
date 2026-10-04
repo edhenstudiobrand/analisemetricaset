@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Métricas Agosto × Setembro · Casa Caçandoca · ēdhen studio brand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   BASE — mesmo sistema visual da ēdhen (cores, fontes, cursor, reveal)
+   ========================================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#1a1a18;
+  --creme:#eee9e0;
+  --creme2:#e8e2d6;
+  --ouro:#b89a6a;
+  --ouro-l:#d4b98a;
+  --surface:#252624;
+  --surface2:#1e1e1c;
+  --muted:rgba(238,233,224,.42);
+  --div:rgba(184,154,106,.15);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);background:#1e1e1c}
+body{background:var(--surface2);color:var(--creme);font-family:var(--sans);font-weight:300;overflow-x:hidden;cursor:none}
+
+#cursor{position:fixed;width:7px;height:7px;background:var(--ouro);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(184,154,106,.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .6s cubic-bezier(.16,1,.3,1),height .6s cubic-bezier(.16,1,.3,1),border-color .4s}
+#cursor-ring.hover{width:52px;height:52px;border-color:rgba(184,154,106,.6)}
+
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.34s}.d4{transition-delay:.46s}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{scroll-behavior:auto}}
+
+.divider{width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(184,154,106,.25),transparent)}
+.eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ouro);margin-bottom:1.5rem;display:block}
+:focus-visible{outline:1px solid var(--ouro);outline-offset:3px}
+
+/* HERO */
+.hero{min-height:92vh;background:var(--surface2);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden;padding:9vh 6vw;position:relative}
+.hero-icon{width:1px;height:64px;background:linear-gradient(to bottom,transparent,var(--ouro));margin:0 auto 2.2rem}
+.hero-tag{font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:var(--ouro);margin-bottom:1.4rem}
+.hero-title{font-family:var(--serif);font-size:clamp(2.4rem,7vw,5.2rem);font-weight:300;letter-spacing:-.02em;line-height:1.05}
+.hero-title em{font-style:italic;color:var(--ouro-l)}
+.hero-brand{font-size:12px;letter-spacing:.12em;color:var(--creme2);margin-top:1.8rem}
+.scroll-hint{position:absolute;bottom:3.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.75rem;transition:opacity .6s ease}
+.scroll-mouse{width:22px;height:36px;border:1px solid rgba(184,154,106,.45);border-radius:11px;display:flex;justify-content:center;padding-top:6px;cursor:pointer;background:none}
+.scroll-dot{width:3px;height:8px;background:var(--ouro);border-radius:2px;animation:scrollBounce 2.2s ease-in-out infinite}
+@keyframes scrollBounce{0%,100%{transform:translateY(0);opacity:1}60%{transform:translateY(10px);opacity:.2}}
+.scroll-label{font-size:8px;letter-spacing:.3em;text-transform:uppercase;color:rgba(184,154,106,.5)}
+
+/* SEÇÕES — mesma linguagem do .s-cal */
+.sec{padding:12vh 6vw}
+.sec.alt{background:var(--surface)}
+.sec h2{font-family:var(--serif);font-size:clamp(2rem,3.6vw,3.8rem);font-weight:300;line-height:1.15;letter-spacing:-.015em;margin-bottom:1.2rem;max-width:820px}
+.sec h2 em{font-style:italic;color:var(--ouro-l)}
+.sec .lead{font-size:14px;line-height:1.9;color:var(--muted);max-width:560px;margin-bottom:3rem}
+
+.filters{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:3.5rem}
+.filter-btn{font-family:var(--sans);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);background:transparent;border:1px solid var(--div);padding:.65rem 1.2rem;cursor:pointer;white-space:nowrap;transition:all .3s ease}
+.filter-btn:hover{color:var(--creme);border-color:rgba(184,154,106,.4)}
+.filter-btn.active{color:var(--surface2);background:var(--ouro);border-color:var(--ouro)}
+
+/* GRADE DE MÉTRICAS — visão geral */
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));border-top:1px solid var(--div);border-left:1px solid var(--div)}
+.m-cell{border-right:1px solid var(--div);border-bottom:1px solid var(--div);padding:2rem 1.6rem 2.2rem;min-height:190px;display:flex;flex-direction:column}
+.m-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ouro);margin-bottom:1.4rem}
+.m-big{font-family:var(--serif);font-size:clamp(2.4rem,4vw,3.4rem);font-weight:300;line-height:1;color:var(--creme)}
+.m-sub{font-size:11px;color:var(--muted);margin-top:.8rem;line-height:1.6}
+.m-row{display:grid;grid-template-columns:34px 1fr auto;gap:.8rem;align-items:center;margin-bottom:.75rem}
+.m-row .mo{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.m-row .val{font-family:var(--serif);font-size:1.45rem;color:var(--creme);min-width:64px;text-align:right}
+.m-row.sep .val{color:var(--ouro-l)}
+.bar{height:1px;background:var(--div);position:relative}
+.bar i{position:absolute;left:0;top:-1px;height:3px;background:rgba(238,233,224,.35);width:0;transition:width 1.1s cubic-bezier(.16,1,.3,1)}
+.m-row.sep .bar i{background:var(--ouro)}
+.delta{margin-top:auto;padding-top:1rem;font-size:10px;letter-spacing:.08em;color:var(--muted)}
+.delta b{font-weight:400;color:var(--ouro-l)}
+.delta b.neg{color:var(--creme)}
+
+/* campos pendentes (editáveis) */
+.pend{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+.pend input,.pend textarea{font-family:var(--serif);font-size:1.3rem;color:var(--creme);background:transparent;border:none;border-bottom:1px dashed rgba(184,154,106,.4);padding:.2rem 0;width:120px;cursor:text}
+.pend textarea{font-family:var(--sans);font-size:13px;line-height:1.8;width:100%;min-height:90px;resize:vertical;border:1px dashed rgba(184,154,106,.3);padding:.8rem}
+.pend input::placeholder,.pend textarea::placeholder{color:rgba(238,233,224,.25);font-style:italic}
+.pend input:focus,.pend textarea:focus{outline:none;border-color:var(--ouro)}
+.tag-pend{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px dashed rgba(184,154,106,.35);padding:3px 10px;display:inline-block}
+
+/* LEITURA — números derivados */
+.read-list{border-top:1px solid var(--div)}
+.read-item{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2rem;padding:2rem 0;border-bottom:1px solid var(--div);align-items:center}
+.read-item h3{font-family:var(--serif);font-size:clamp(1.15rem,2.2vw,1.5rem);font-weight:300;line-height:1.3;margin-bottom:.5rem}
+.read-item p{font-size:13px;line-height:1.85;color:var(--creme2);max-width:520px}
+.read-vals{display:flex;align-items:baseline;gap:1.2rem;justify-content:flex-end;flex-wrap:wrap}
+.read-vals .from{font-family:var(--serif);font-size:1.6rem;color:var(--muted)}
+.read-vals .arrow{font-family:var(--serif);font-style:italic;color:var(--ouro);font-size:1.2rem}
+.read-vals .to{font-family:var(--serif);font-size:clamp(2rem,3.4vw,2.8rem);color:var(--ouro-l)}
+@media(max-width:700px){.read-item{grid-template-columns:1fr}.read-vals{justify-content:flex-start}}
+
+/* ACCORDION (mesmo do calendário) */
+.cal-list{display:flex;flex-direction:column;border-top:1px solid var(--div)}
+.cal-card{border-bottom:1px solid var(--div)}
+.cal-card.hide{display:none}
+.cal-head{display:grid;grid-template-columns:auto 1fr auto;gap:1.4rem;align-items:center;padding:1.8rem 0;cursor:pointer}
+.cal-date-col{display:flex;flex-direction:column;gap:.5rem;min-width:110px}
+.cal-day{font-family:var(--serif);font-size:1.5rem;font-style:italic;color:var(--ouro-l)}
+.cal-status{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.35rem}
+.cal-status .sdot{width:6px;height:6px;border-radius:50%;border:1px solid var(--ouro);flex-shrink:0}
+.cal-status.st-ok .sdot{background:var(--ouro);box-shadow:0 0 0 2px rgba(184,154,106,.25)}
+.cal-status.st-parcial .sdot{background:rgba(184,154,106,.4)}
+.cal-status.st-fazer .sdot{background:transparent}
+.cal-mid{min-width:0}
+.cal-meta{display:flex;gap:.7rem;align-items:center;margin-bottom:.5rem;flex-wrap:wrap}
+.cal-format{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ouro);border:1px solid rgba(184,154,106,.4);padding:3px 10px}
+.cal-platform{font-size:10px;letter-spacing:.08em;color:var(--muted)}
+.cal-title{font-family:var(--serif);font-size:clamp(1.15rem,2.2vw,1.5rem);font-weight:300;color:var(--creme);line-height:1.3}
+.cal-icon{font-size:24px;color:var(--ouro);font-family:var(--serif);font-style:italic;line-height:1;transition:transform .5s cubic-bezier(.16,1,.3,1);flex-shrink:0}
+.cal-card.open .cal-icon{transform:rotate(45deg)}
+.cal-body{max-height:0;overflow:hidden;transition:max-height .6s cubic-bezier(.16,1,.3,1)}
+.cal-card.open .cal-body{max-height:2200px}
+.cal-body-inner{padding:0 0 2.6rem;display:grid;gap:1.6rem;max-width:760px}
+.cal-field .field-label{display:block;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ouro);margin-bottom:.6rem}
+.cal-field p{font-size:13px;line-height:1.85;color:var(--creme2);white-space:pre-line}
+.cal-field p.script{font-family:var(--serif);font-style:italic;font-size:14.5px;line-height:1.9;color:var(--creme)}
+.cal-field ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.cal-field ul li{font-size:13px;line-height:1.7;color:var(--creme2);padding-left:1rem;position:relative}
+.cal-field ul li::before{content:"—";position:absolute;left:0;color:var(--ouro)}
+.calc{font-family:var(--serif);font-size:1.8rem;color:var(--ouro-l)}
+@media(max-width:700px){
+  .cal-head{grid-template-columns:1fr auto;grid-template-areas:"date icon" "mid mid"}
+  .cal-date-col{grid-area:date;flex-direction:row;align-items:center;gap:.8rem}
+  .cal-icon{grid-area:icon}
+  .cal-mid{grid-area:mid;margin-top:.9rem}
+}
+
+/* RANKING — posts que trouxeram seguidores */
+.rank{border-top:1px solid var(--div);margin-bottom:4rem}
+.rank-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(120px,1fr) 60px;gap:1.6rem;align-items:center;padding:1.6rem 0;border-bottom:1px solid var(--div)}
+.rank-row h3{font-family:var(--serif);font-size:clamp(1.1rem,2vw,1.35rem);font-weight:300;line-height:1.3}
+.rank-row .cal-platform{display:block;margin-top:.35rem}
+.rank-row .n{font-family:var(--serif);font-size:2.2rem;color:var(--ouro-l);text-align:right}
+.rank-row .bar i{background:var(--ouro)}
+@media(max-width:600px){.rank-row{grid-template-columns:1fr 50px}.rank-row .bar{grid-column:1/-1;order:3}}
+
+.feature{border:1px solid var(--div);padding:clamp(1.6rem,4vw,3rem);display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:2.5rem;align-items:center}
+.feature h3{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.3rem);font-weight:300;line-height:1.2;margin-bottom:1rem}
+.feature h3 em{font-style:italic;color:var(--ouro-l)}
+.feature p{font-size:13px;line-height:1.85;color:var(--creme2)}
+.f-stats{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--div);border-left:1px solid var(--div)}
+.f-stats div{border-right:1px solid var(--div);border-bottom:1px solid var(--div);padding:1.2rem}
+.f-stats b{display:block;font-family:var(--serif);font-weight:300;font-size:2rem;color:var(--creme)}
+.f-stats span{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:760px){.feature{grid-template-columns:1fr}}
+
+.note{font-size:11px;color:var(--muted);line-height:1.7;margin-top:2rem;max-width:620px}
+
+footer{background:var(--surface2);border-top:1px solid var(--div);padding:1.75rem 6vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem}
+footer .brand{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--ouro-l)}
+footer .copy{font-size:10px;color:rgba(238,233,224,.25);letter-spacing:.1em}
+@media(max-width:600px){
+  body{cursor:auto}
+  #cursor,#cursor-ring{display:none}
+  footer{flex-direction:column;text-align:center}
+}
+@media (hover:none){body{cursor:auto}#cursor,#cursor-ring{display:none}}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-icon"></div>
+  <p class="hero-tag">Instagram · Análise de métricas</p>
+  <h1 class="hero-title">Casa Caçandoca<br><em>Agosto × Setembro</em></h1>
+  <p class="hero-brand">2026</p>
+  <div class="scroll-hint" id="scrollHint">
+    <button class="scroll-mouse" id="scrollMouse" aria-label="Ir para a visão geral"><div class="scroll-dot"></div></button>
+    <span class="scroll-label">rolar</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VISÃO GERAL -->
+<section class="sec alt" id="visao">
+  <span class="eyebrow reveal">Visão geral</span>
+  <h2 class="reveal d1">Dois meses.<br><em>Lado a lado.</em></h2>
+  <p class="lead reveal d2">Os principais números do perfil nos dois meses. Alterne a visualização abaixo para comparar ou ver cada mês sozinho.</p>
+
+  <div class="filters reveal d3" id="viewFilters">
+    <button class="filter-btn active" data-view="comp">Comparar</button>
+    <button class="filter-btn" data-view="a">Agosto</button>
+    <button class="filter-btn" data-view="s">Setembro</button>
+  </div>
+
+  <div class="m-grid reveal d4" id="mGrid"></div>
+  <p class="note reveal">PS: lembrando que no mês de agosto estávamos com tráfego pago.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- LEITURA DOS NÚMEROS -->
+<section class="sec" id="leitura">
+  <span class="eyebrow reveal">O que os números dizem</span>
+  <h2 class="reveal d1">Mais presença.<br><em>Ainda sem crescimento.</em></h2>
+  <p class="lead reveal d2">Números brutos escondem a história. Estas proporções mostram a eficiência de cada conteúdo publicado.</p>
+
+  <div class="read-list reveal d3">
+    <div class="read-item">
+      <div>
+        <h3>Taxa de engajamento sobre a base</h3>
+        <p>Interações divididas pelo número de seguidores. Quase dobrou: o perfil voltou a conversar com quem já está nele.</p>
+      </div>
+      <div class="read-vals"><span class="from">0,65%</span><span class="arrow">para</span><span class="to">1,26%</span></div>
+    </div>
+    <div class="read-item">
+      <div>
+        <h3>Toques no link a cada visita ao perfil</h3>
+        <p>Menos pessoas visitaram o perfil, mas uma parte maior delas clicou no link. Quem chega está mais interessado em reservar.</p>
+      </div>
+      <div class="read-vals"><span class="from">14,1%</span><span class="arrow">para</span><span class="to">18,8%</span></div>
+    </div>
+    <div class="read-item">
+      <div>
+        <h3>Interações por conteúdo publicado</h3>
+        <p>Publicamos oito vezes mais e as interações dobraram. Cada peça, sozinha, rende menos. Volume abriu a porta; agora o trabalho é fazer cada conteúdo render mais.</p>
+      </div>
+      <div class="read-vals"><span class="from">23,4</span><span class="arrow">para</span><span class="to">5,6</span></div>
+    </div>
+    <div class="read-item">
+      <div>
+        <h3>Frequência: vezes que a mesma pessoa viu a Casa</h3>
+        <p>As visualizações caíram pouco, mas o alcance caiu muito. Em setembro falamos mais vezes com menos pessoas: quem já conhece a Casa viu o conteúdo cerca de 11 vezes. Ótimo para lembrança, insuficiente para crescer.</p>
+      </div>
+      <div class="read-vals"><span class="from">4,4×</span><span class="arrow">para</span><span class="to">11,0×</span></div>
+    </div>
+    <div class="read-item">
+      <div>
+        <h3>Saldo de seguidores</h3>
+        <p>Sete novos seguidores rastreados em posts, mas o total terminou igual. As saídas anularam as entradas. Este é o ponto que mais precisa de atenção em outubro.</p>
+      </div>
+      <div class="read-vals"><span class="from">32.506</span><span class="arrow">para</span><span class="to">32.506</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRINCIPAIS MÉTRICAS -->
+<section class="sec alt" id="principais">
+  <span class="eyebrow reveal">Principais métricas</span>
+  <h2 class="reveal d1">Seis indicadores.<br><em>Um por vez.</em></h2>
+  <p class="lead reveal d2">Clique em cada métrica para abrir a leitura.</p>
+
+  <div class="cal-list reveal d3" id="kpis">
+
+    <div class="cal-card">
+      <div class="cal-head">
+        <div class="cal-date-col"><span class="cal-day">Alcance</span><span class="cal-status st-ok"><span class="sdot"></span>Com dado</span></div>
+        <div class="cal-mid"><div class="cal-meta"><span class="cal-format">Contas alcançadas</span><span class="cal-platform">6.882 para 2.578</span></div><h3 class="cal-title">Quantas pessoas diferentes viram a Casa</h3></div>
+        <span class="cal-icon">+</span>
+      </div>
+      <div class="cal-body"><div class="cal-body-inner">
+        <div class="cal-field"><span class="field-label">Agosto → Setembro</span><p class="calc">6.882 → 2.578 · −62,5%</p></div>
+        <div class="cal-field"><span class="field-label">Leitura</span><p>A queda acompanha o fim do tráfego pago de agosto: o anúncio levava a Casa a pessoas de fora da base. Sem ele, o orgânico ficou concentrado em quem já segue. Por isso o impulsionamento volta ao plano, agora com objetivo de visitas ao perfil.</p></div>
+        <div class="cal-field"><span class="field-label">Por que importa</span><p>Alcance é o topo do funil. Sem gente nova vendo, não há seguidor novo, não há visita, não há reserva. É a métrica que o impulsionamento deve mover primeiro.</p></div>
+      </div></div>
+    </div>
+
+    <div class="cal-card">
+      <div class="cal-head">
+        <div class="cal-date-col"><span class="cal-day">Engajamento</span><span class="cal-status st-ok"><span class="sdot"></span>Com dado</span></div>
+        <div class="cal-mid"><div class="cal-meta"><span class="cal-format">Interações</span><span class="cal-platform">211 para 411</span></div><h3 class="cal-title">Quase o dobro de interações</h3></div>
+        <span class="cal-icon">+</span>
+      </div>
+      <div class="cal-body"><div class="cal-body-inner">
+        <div class="cal-field"><span class="field-label">Sobre a base de seguidores</span><p class="calc">0,65% → 1,26%</p></div>
+        <div class="cal-field"><span class="field-label">Sobre o alcance</span><p class="calc">3,1% → 15,9%</p></div>
+        <div class="cal-field"><span class="field-label">Leitura</span><p>Engajamento sobre a base mostra se quem já segue está acordado. Engajamento sobre o alcance mostra se o conteúdo convence quem o viu. O segundo é o mais honesto para comparar posts entre si.</p></div>
+      </div></div>
+    </div>
+
+    <div class="cal-card">
+      <div class="cal-head">
+        <div class="cal-date-col"><span class="cal-day">Seguidores</span><span class="cal-status st-ok"><span class="sdot"></span>Com dado</span></div>
+        <div class="cal-mid"><div class="cal-meta"><span class="cal-format">Base</span><span class="cal-platform">32.506 nos dois meses</span></div><h3 class="cal-title">Base estável, saldo zero</h3></div>
+        <span class="cal-icon">+</span>
+      </div>
+      <div class="cal-body"><div class="cal-body-inner">
+        <div class="cal-field"><span class="field-label">Leitura</span><p>Sete seguidores vieram de posts rastreados; cinco deles do reels de casamento em collab. O total não se moveu, o que indica saídas na mesma proporção.
+
+Com uma base de 32 mil e pouca atividade em agosto, parte desses seguidores pode estar inativa. Uma base grande e adormecida derruba o alcance orgânico de cada post.</p></div>
+        <div class="cal-field"><span class="field-label">Para conferir</span><ul><li>Número exato de novos seguidores e de deixaram de seguir no painel profissional.</li><li>Confirmar se o total de 32.506 foi copiado nos dois meses ou se é de fato idêntico.</li></ul></div>
+      </div></div>
+    </div>
+
+    <div class="cal-card">
+      <div class="cal-head">
+        <div class="cal-date-col"><span class="cal-day">Frequência</span><span class="cal-status st-ok"><span class="sdot"></span>Com dado</span></div>
+        <div class="cal-mid"><div class="cal-meta"><span class="cal-format">Visualizações ÷ alcance</span></div><h3 class="cal-title">Quantas vezes a mesma pessoa vê a Casa</h3></div>
+        <span class="cal-icon">+</span>
+      </div>
+      <div class="cal-body"><div class="cal-body-inner">
+        <div class="cal-field"><span class="field-label">Agosto → Setembro</span><p class="calc">4,4× → 11,0×</p></div>
+        <div class="cal-field"><span class="field-label">Leitura</span><p>30.595 visualizações para 6.882 contas em agosto; 28.372 para 2.578 em setembro. A base está muito exposta à Casa e quase ninguém novo está chegando. O próximo passo é abrir para público novo, não publicar ainda mais para os mesmos.</p></div>
+        <div class="cal-field"><span class="field-label">Como ler</span><p>Abaixo de 2: a marca passa rápido e é esquecida. Entre 2 e 4: lembrança saudável. Muito acima disso com alcance baixo: falamos sempre com as mesmas pessoas e precisamos abrir para público novo.</p></div>
+      </div></div>
+    </div>
+
+    <div class="cal-card">
+      <div class="cal-head">
+        <div class="cal-date-col"><span class="cal-day">Mais vistos</span><span class="cal-status st-ok"><span class="sdot"></span>Com dado</span></div>
+        <div class="cal-mid"><div class="cal-meta"><span class="cal-format">Carrossel</span><span class="cal-platform">1,2 mil visualizações</span></div><h3 class="cal-title">"Como seria passar alguns dias aqui com quem você ama?"</h3></div>
+        <span class="cal-icon">+</span>
+      </div>
+      <div class="cal-body"><div class="cal-body-inner">
+        <div class="cal-field"><span class="field-label">Leitura</span><p>Um carrossel chamou atenção pelas visualizações. A pergunta coloca quem lê dentro da cena, com alguém que ama, e transforma a Casa em memória a ser vivida, não em quarto a ser alugado.</p></div>
+        <div class="cal-field"><span class="field-label">O que levar adiante</span><ul><li>Abrir conteúdos com perguntas que convidam a imaginar a estadia.</li><li>Testar a mesma pergunta em formato reels para comparar alcance.</li><li>Observar se as visualizações vieram de seguidores ou de não seguidores.</li></ul></div>
+      </div></div>
+    </div>
+
+    <div class="cal-card">
+      <div class="cal-head">
+        <div class="cal-date-col"><span class="cal-day">Retenção</span><span class="cal-status st-ok"><span class="sdot"></span>Com dado</span></div>
+        <div class="cal-mid"><div class="cal-meta"><span class="cal-format">Reels</span><span class="cal-platform">Tempo médio de 5s</span></div><h3 class="cal-title">Quanto tempo as pessoas ficam no vídeo</h3></div>
+        <span class="cal-icon">+</span>
+      </div>
+      <div class="cal-body"><div class="cal-body-inner">
+        <div class="cal-field"><span class="field-label">Tempo médio de visualização</span><p class="calc">5 segundos</p></div>
+        <div class="cal-field"><span class="field-label">Leitura</span><p>As pessoas ficam, em média, 5 segundos. O peso disso depende da duração de cada vídeo: em um reels de 7 segundos é ótimo; em um de 30, significa que a maioria saiu cedo. A mensagem principal precisa aparecer nos primeiros 3 segundos.</p></div>
+        <div class="cal-field"><span class="field-label">Próximo passo</span><ul><li>Abrir com movimento, rosto ou frase forte já no primeiro quadro.</li><li>Testar reels mais curtos, entre 7 e 12 segundos.</li><li>Registrar a duração de cada reels junto com o tempo médio no próximo relatório.</li></ul></div>
+      </div></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- POSTS QUE TROUXERAM SEGUIDORES + DESTAQUE -->
+<section class="sec" id="destaque">
+  <span class="eyebrow reveal">Seguidores por post</span>
+  <h2 class="reveal d1">Os conteúdos<br><em>que se destacaram.</em></h2>
+  <p class="lead reveal d2">Trazer seguidores, circular e ser visto são resultados diferentes. Cada conteúdo abaixo se destacou em um deles.</p>
+
+  <div class="rank reveal d3">
+    <div class="rank-row"><div><h3>Reels do casamento em collab</h3><span class="cal-platform">Reels · Collab</span></div><div class="bar"><i data-w="100"></i></div><span class="n">5</span></div>
+    <div class="rank-row"><div><h3>Casa Caçandoca piscina</h3><span class="cal-platform">Reels</span></div><div class="bar"><i data-w="20"></i></div><span class="n">1</span></div>
+    <div class="rank-row"><div><h3>POV: você decidiu viver uma experiência diferente em Ubatuba</h3><span class="cal-platform">Reels</span></div><div class="bar"><i data-w="20"></i></div><span class="n">1</span></div>
+  </div>
+
+  <div class="feature reveal d4">
+    <div>
+      <span class="eyebrow">Post destaque do mês</span>
+      <h3>POV: você decidiu viver uma experiência diferente <em>em Ubatuba</em></h3>
+      <p>O reels mais repostado do mês. Frase forte, imagens bonitas e um convite à identificação: quem reposta está dizendo "isso sou eu". É conteúdo de distribuição. Trouxe um seguidor, o que mostra que espalhar não basta; falta o motivo para seguir a Casa depois de assistir.</p>
+    </div>
+    <div class="f-stats">
+      <div><b>11</b><span>Reposts</span></div>
+      <div><b>8</b><span>Comentários</span></div>
+      <div><b>3</b><span>Compart.</span></div>
+      <div><b>1</b><span>Seguidor</span></div>
+    </div>
+  </div>
+  <div class="feature reveal" style="margin-top:2rem">
+    <div>
+      <span class="eyebrow">Destaque em visualizações</span>
+      <h3>Como seria passar alguns dias aqui <em>com quem você ama?</em></h3>
+      <p>Um carrossel que se destacou em visualizações. A pergunta convida a imaginar a estadia com alguém especial, e esse é o desejo que leva à reserva.</p>
+    </div>
+    <div class="f-stats">
+      <div style="grid-column:1/-1"><b>1,2 mil</b><span>Visualizações</span></div>
+    </div>
+  </div>
+  <p class="note reveal">A collab de casamento respondeu por 5 dos 7 seguidores rastreados em posts. É a alavanca de crescimento mais clara que temos até agora.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- APRENDIZADOS -->
+<section class="sec alt" id="aprendizados">
+  <span class="eyebrow reveal">Aprendizados</span>
+  <h2 class="reveal d1">Continuar, replanejar<br><em>e testar.</em></h2>
+  <p class="lead reveal d2">Filtre por categoria e clique para abrir cada ponto.</p>
+
+  <div class="filters reveal d3" id="learnFilters">
+    <button class="filter-btn active" data-filter="todos">Todos</button>
+    <button class="filter-btn" data-filter="continuar">Continuar</button>
+    <button class="filter-btn" data-filter="replanejar">Replanejar</button>
+    <button class="filter-btn" data-filter="testar">Testar</button>
+    <button class="filter-btn" data-filter="proximas">Próximas etapas</button>
+  </div>
+
+  <div class="cal-list reveal d4" id="learnList">
+
+    <div class="cal-card" data-type="continuar">
+      <div class="cal-head">
+        <div class="cal-date-col"><span class="cal-day">Continuar</span><span class="cal-status st-ok"><span class="sdot"></span>Funcionou</span></div>
+        <div class="cal-mid"><div class="cal-meta"><span class="cal-format">Reels</span><span class="cal-platform">Distribuição</span></div><h3 class="cal-title">Reels com frase e imagens bonitas</h3></div>
+        <span class="cal-icon">+</span>
+      </div>
+      <div class="cal-body"><div class="cal-body-inner">
+        <div class="cal-field"><span class="field-label">Evidência</span><p>O POV de Ubatuba teve 11 reposts, 8 comentários e 3 compartilhamentos, o melhor desempenho de distribuição do mês. Esse tipo de conteúdo gera salvamento e compartilhamento, sinais que o algoritmo valoriza.</p></div>
+        <div class="cal-field"><span class="field-label">Ajuste</span><p>Fechar cada reels com um motivo para seguir: "Siga para ver a Caçandoca toda semana" ou um gancho de série. Hoje ele espalha, mas não converte.</p></div>
+      </div></div>
+    </div>
+
+    <div class="cal-card" data-type="continuar">
+      <div class="cal-head">
+        <div class="cal-date-col"><span class="cal-day">Continuar</span><span class="cal-status st-ok"><span class="sdot"></span>Funcionou</span></div>
+        <div class="cal-mid"><div class="cal-meta"><span class="cal-format">Collab</span><span class="cal-platform">Crescimento</span></div><h3 class="cal-title">Conteúdo em parceria</h3></div>
+        <span class="cal-icon">+</span>
+      </div>
+      <div class="cal-body"><div class="cal-body-inner">
+        <div class="cal-field"><span class="field-label">Evidência</span><p>71% dos seguidores rastreados vieram de uma única collab. Collab coloca a Casa diante de um público que ainda não a conhece, com a confiança de outro perfil.</p></div>
+        <div class="cal-field"><span class="field-label">Ajuste</span><p>Tornar collab uma rotina mensal, e não um acaso.</p></div>
+      </div></div>
+    </div>
+
+    <div class="cal-card" data-type="continuar">
+      <div class="cal-head">
+        <div class="cal-date-col"><span class="cal-day">Continuar</span><span class="cal-status st-ok"><span class="sdot"></span>Funcionou</span></div>
+        <div class="cal-mid"><div class="cal-meta"><span class="cal-format">Stories</span><span class="cal-platform">Presença</span></div><h3 class="cal-title">Constância nos stories</h3></div>
+        <span class="cal-icon">+</span>
+      </div>
+      <div class="cal-body"><div class="cal-body-inner">
+        <div class="cal-field"><span class="field-label">Evidência</span><p>De 8 para 65 stories. O engajamento sobre a base quase dobrou e a taxa de clique no link subiu de 14,1% para 18,8%. A Casa voltou a ser lembrada por quem já segue.</p></div>
+      </div></div>
+    </div>
+
+    <div class="cal-card" data-type="replanejar">
+      <div class="cal-head">
+        <div class="cal-date-col"><span class="cal-day">Replanejar</span><span class="cal-status st-parcial"><span class="sdot"></span>Não funcionou</span></div>
+        <div class="cal-mid"><div class="cal-meta"><span class="cal-format">Carrossel</span><span class="cal-platform">Calendário</span></div><h3 class="cal-title">Muitos carrosséis próximos um do outro</h3></div>
+        <span class="cal-icon">+</span>
+      </div>
+      <div class="cal-body"><div class="cal-body-inner">
+        <div class="cal-field"><span class="field-label">Leitura</span><p>O problema não é o formato: o carrossel "Como seria passar alguns dias aqui com quem você ama?" chegou a 1,2 mil visualizações. O problema é a sequência. Carrosséis seguidos falam com quem já segue e repetem o mesmo ritmo visual no feed.</p></div>
+        <div class="cal-field"><span class="field-label">Replanejamento</span><p>Alternar formatos na semana: reels para alcance, carrossel para salvamento e informação, foto para respiro estético.</p></div>
+      </div></div>
+    </div>
+
+    <div class="cal-card" data-type="replanejar">
+      <div class="cal-head">
+        <div class="cal-date-col"><span class="cal-day">Replanejar</span><span class="cal-status st-parcial"><span class="sdot"></span>Não funcionou</span></div>
+        <div class="cal-mid"><div class="cal-meta"><span class="cal-format">Estratégia</span><span class="cal-platform">Eficiência</span></div><h3 class="cal-title">Volume sem objetivo por peça</h3></div>
+        <span class="cal-icon">+</span>
+      </div>
+      <div class="cal-body"><div class="cal-body-inner">
+        <div class="cal-field"><span class="field-label">Leitura</span><p>Oito vezes mais conteúdo gerou duas vezes mais interação. As interações por conteúdo caíram de 23,4 para 5,6. Cada post precisa nascer com uma função clara: atrair, aquecer ou converter.</p></div>
+      </div></div>
+    </div>
+
+    <div class="cal-card" data-type="replanejar">
+      <div class="cal-head">
+        <div class="cal-date-col"><span class="cal-day">Replanejar</span><span class="cal-status st-parcial"><span class="sdot"></span>Atenção</span></div>
+        <div class="cal-mid"><div class="cal-meta"><span class="cal-format">Perfil</span><span class="cal-platform">Topo do funil</span></div><h3 class="cal-title">Visitas ao perfil caíram 18%</h3></div>
+        <span class="cal-icon">+</span>
+      </div>
+      <div class="cal-body"><div class="cal-body-inner">
+        <div class="cal-field"><span class="field-label">Leitura</span><p>De 1.054 para 864 visitas. Os cliques no link subiram, então quem chega converte melhor, mas está chegando menos gente. Mais alcance para não seguidores é o que resolve isso.</p></div>
+      </div></div>
+    </div>
+
+    <div class="cal-card" data-type="testar">
+      <div class="cal-head">
+        <div class="cal-date-col"><span class="cal-day">Testar</span><span class="cal-status st-fazer"><span class="sdot"></span>A testar</span></div>
+        <div class="cal-mid"><div class="cal-meta"><span class="cal-format">Reels</span><span class="cal-platform">Proprietárias</span></div><h3 class="cal-title">Vídeos falados das proprietárias</h3></div>
+        <span class="cal-icon">+</span>
+      </div>
+      <div class="cal-body"><div class="cal-body-inner">
+        <div class="cal-field"><span class="field-label">Por quê</span><p>Pessoas seguem pessoas. Um rosto dá à Casa uma voz, uma história e um motivo de confiança para quem vai reservar uma estadia.</p></div>
+        <div class="cal-field"><span class="field-label">Ideias de roteiro</span><ul><li>Por que escolhemos a Caçandoca.</li><li>O que preparamos antes de um hóspede chegar.</li><li>O lugar preferido de cada uma na Casa.</li></ul></div>
+        <div class="cal-field"><span class="field-label">Como medir</span><p>Comparar retenção e seguidores ganhos com a média dos reels sem rosto.</p></div>
+      </div></div>
+    </div>
+
+    <div class="cal-card" data-type="testar">
+      <div class="cal-head">
+        <div class="cal-date-col"><span class="cal-day">Testar</span><span class="cal-status st-fazer"><span class="sdot"></span>A testar</span></div>
+        <div class="cal-mid"><div class="cal-meta"><span class="cal-format">Série fixa</span><span class="cal-platform">Ritual</span></div><h3 class="cal-title">Rituais e repetição</h3></div>
+        <span class="cal-icon">+</span>
+      </div>
+      <div class="cal-body"><div class="cal-body-inner">
+        <div class="cal-field"><span class="field-label">Por quê</span><p>Repetição cria expectativa. Quando o público sabe o que vem e quando vem, ele volta, e um motivo para voltar é um motivo para seguir.</p></div>
+        <div class="cal-field"><span class="field-label">Exemplos</span><ul><li>Toda sexta: "Bom dia da Caçandoca", o mesmo enquadramento do amanhecer.</li><li>Todo domingo nos stories: a pergunta da semana para os hóspedes.</li><li>Uma vez por mês: "A Casa por um hóspede".</li></ul></div>
+      </div></div>
+    </div>
+
+    <div class="cal-card" data-type="testar">
+      <div class="cal-head">
+        <div class="cal-date-col"><span class="cal-day">Testar</span><span class="cal-status st-fazer"><span class="sdot"></span>A testar</span></div>
+        <div class="cal-mid"><div class="cal-meta"><span class="cal-format">Chamada</span><span class="cal-platform">Conversão</span></div><h3 class="cal-title">Pedido explícito para seguir</h3></div>
+        <span class="cal-icon">+</span>
+      </div>
+      <div class="cal-body"><div class="cal-body-inner">
+        <div class="cal-field"><span class="field-label">Por quê</span><p>Nenhum conteúdo de setembro pediu o follow. Testar em metade dos reels de outubro uma chamada final e comparar os seguidores ganhos com a outra metade.</p></div>
+      </div></div>
+    </div>
+
+    <div class="cal-card" data-type="proximas">
+      <div class="cal-head">
+        <div class="cal-date-col"><span class="cal-day">Próximas</span><span class="cal-status st-fazer"><span class="sdot"></span>Outubro</span></div>
+        <div class="cal-mid"><div class="cal-meta"><span class="cal-format">Conteúdo</span><span class="cal-platform">Seguidores reais</span></div><h3 class="cal-title">Conteúdos que trazem seguidores reais</h3></div>
+        <span class="cal-icon">+</span>
+      </div>
+      <div class="cal-body"><div class="cal-body-inner">
+        <div class="cal-field"><span class="field-label">Exemplos de posts</span><ul>
+          <li>Collabs com fotógrafos de casamento, guias de trilha e restaurantes de Ubatuba, um por mês.</li>
+          <li>Guia salvável: "Caçandoca em um fim de semana", com trilha, praia e onde comer.</li>
+          <li>Série com nome e dia fixo, que só faz sentido para quem segue.</li>
+          <li>Reels das proprietárias contando a história da Casa.</li>
+          <li>Hóspedes reais repostados e marcados, com autorização.</li>
+          <li>Bastidor de casamento ou evento na Casa, sempre em collab com os noivos ou fornecedores.</li>
+        </ul></div>
+      </div></div>
+    </div>
+
+    <div class="cal-card" data-type="proximas">
+      <div class="cal-head">
+        <div class="cal-date-col"><span class="cal-day">Próximas</span><span class="cal-status st-fazer"><span class="sdot"></span>Outubro</span></div>
+        <div class="cal-mid"><div class="cal-meta"><span class="cal-format">Tráfego</span><span class="cal-platform">Alcance</span></div><h3 class="cal-title">Impulsionar posts específicos</h3></div>
+        <span class="cal-icon">+</span>
+      </div>
+      <div class="cal-body"><div class="cal-body-inner">
+        <div class="cal-field"><span class="field-label">Critérios</span><ul>
+          <li>Impulsionar só o que já provou valor no orgânico: o POV de Ubatuba e o reels de casamento.</li>
+          <li>Objetivo: visitas ao perfil, não engajamento. Engajamento pago infla números e não traz hóspede.</li>
+          <li>Público fora da base atual, nas cidades de onde vêm os hóspedes.</li>
+          <li>Orçamento fixo por sete dias, medindo custo por visita ao perfil e seguidores ganhos.</li>
+        </ul></div>
+      </div></div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <span class="brand">ēdhen studio brand</span>
+  <span class="copy">Casa Caçandoca · Métricas Agosto × Setembro · 2026</span>
+</footer>
+
+<script>
+/* ARMAZENAMENTO DOS CAMPOS PENDENTES */
+const KEY='cacandoca-metricas-2026';
+let store={};
+try{store=JSON.parse(localStorage.getItem(KEY))||{};}catch(e){store={};}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}}
+const num=v=>(v===undefined||v===null||v==='')?null:Number(v);
+const fmt=n=>n.toLocaleString('pt-BR');
+const fmt1=n=>n.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1});
+
+/* VISÃO GERAL */
+const M=[
+  {k:'seg',label:'Seguidores',a:32506,s:32506},
+  {k:'feed',label:'Posts no feed',a:1,s:9},
+  {k:'stories',label:'Stories',a:8,s:65},
+  {k:'views',label:'Visualizações',a:30595,s:28372},
+  {k:'int',label:'Interações',a:211,s:411},
+  {k:'vis',label:'Visitas ao perfil',a:1054,s:864},
+  {k:'link',label:'Toques no link da bio',a:149,s:162}
+];
+let view='comp';
+function val(m,mo){return m.edit?num(store[m.k+'_'+mo]):m[mo];}
+function deltaHTML(a,s){
+  if(a==null||s==null) return '';
+  if(a===0) return '';
+  const d=(s-a)/a*100;
+  const txt=(d>0?'+':'')+fmt1(d).replace(',0','')+'%';
+  return `<div class="delta">Variação <b class="${d<0?'neg':''}">${d===0?'estável':txt}</b></div>`;
+}
+function inputHTML(m,mo,ph){
+  const v=store[m.k+'_'+mo]??'';
+  return `<input type="number" inputmode="numeric" data-key="${m.k}_${mo}" value="${v}" placeholder="${ph}" aria-label="${m.label} ${ph}">`;
+}
+function renderGrid(){
+  const g=document.getElementById('mGrid');
+  g.innerHTML=M.map(m=>{
+    const a=val(m,'a'), s=val(m,'s');
+    if(view==='comp'){
+      if(m.edit && (a==null||s==null)){
+        return `<div class="m-cell"><span class="m-label">${m.label}</span><div class="pend">${inputHTML(m,'a','agosto')}${inputHTML(m,'s','setembro')}</div><div class="delta"><span class="tag-pend">Aguardando dado</span></div></div>`;
+      }
+      const mx=Math.max(a,s)||1;
+      return `<div class="m-cell"><span class="m-label">${m.label}</span>
+        <div class="m-row"><span class="mo">Ago</span><div class="bar"><i data-w="${a/mx*100}"></i></div><span class="val">${fmt(a)}</span></div>
+        <div class="m-row sep"><span class="mo">Set</span><div class="bar"><i data-w="${s/mx*100}"></i></div><span class="val">${fmt(s)}</span></div>
+        ${deltaHTML(a,s)}</div>`;
+    }
+    const v=view==='a'?a:s, mo=view;
+    if(v==null){
+      return `<div class="m-cell"><span class="m-label">${m.label}</span><div class="pend">${inputHTML(m,mo,view==='a'?'agosto':'setembro')}</div><div class="delta"><span class="tag-pend">Aguardando dado</span></div></div>`;
+    }
+    const sub=m.k==='link'?`${fmt1(v/(view==='a'?1054:864)*100)}% das visitas`:(m.k==='int'?`${fmt1(v/32506*100)}% da base`:'');
+    return `<div class="m-cell"><span class="m-label">${m.label}</span><span class="m-big">${fmt(v)}</span>${sub?`<span class="m-sub">${sub}</span>`:''}</div>`;
+  }).join('');
+  bindInputs(g); animateBars(g); bindHover(g);
+}
+document.querySelectorAll('#viewFilters .filter-btn').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#viewFilters .filter-btn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); view=b.dataset.view; renderGrid();
+}));
+
+/* CAMPOS EDITÁVEIS */
+function bindInputs(root){
+  root.querySelectorAll('[data-key]').forEach(el=>{
+    if(el._b) return; el._b=true;
+    if(store[el.dataset.key]!==undefined && el.value==='') el.value=store[el.dataset.key];
+    el.addEventListener('change',()=>{
+      const v=el.value.trim();
+      if(v==='') delete store[el.dataset.key]; else store[el.dataset.key]=v;
+      save(); updateCalcs();
+      if(el.closest('#mGrid')) renderGrid();
+    });
+  });
+}
+
+/* CÁLCULOS AUTOMÁTICOS */
+function setStatus(name,state){
+  const el=document.querySelector(`[data-status="${name}"]`); if(!el) return;
+  el.classList.remove('st-ok','st-parcial','st-fazer');
+  const map={ok:['st-ok','Com dado'],parcial:['st-parcial','Parcial'],fazer:['st-fazer','Aguardando dado']};
+  el.classList.add(map[state][0]); el.lastElementChild.textContent=map[state][1];
+}
+function updateCalcs(){}
+
+/* BARRAS */
+function animateBars(root){
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    root.querySelectorAll('.bar i[data-w]').forEach(i=>i.style.width=i.dataset.w+'%');
+  }));
+}
+
+/* CURSOR */
+const cursor=document.getElementById('cursor'), ring=document.getElementById('cursor-ring');
+window.addEventListener('mousemove',e=>{
+  cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';
+  ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';
+});
+function bindHover(root){
+  root.querySelectorAll('a,button,input,textarea,.cal-head').forEach(el=>{
+    if(el._h) return; el._h=true;
+    el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
+    el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
+  });
+}
+
+/* REVEAL */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){
+      en.target.classList.add('vis');
+      if(en.target.classList.contains('rank')) animateBars(en.target);
+    }
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* SCROLL HINT */
+const scrollHint=document.getElementById('scrollHint');
+document.getElementById('scrollMouse').addEventListener('click',()=>document.getElementById('visao').scrollIntoView({behavior:'smooth'}));
+window.addEventListener('scroll',()=>{scrollHint.style.opacity=window.scrollY>80?'0':'1';});
+
+/* ACCORDION */
+document.querySelectorAll('.cal-card .cal-head').forEach(head=>{
+  head.setAttribute('tabindex','0'); head.setAttribute('role','button');
+  head.addEventListener('click',()=>head.closest('.cal-card').classList.toggle('open'));
+  head.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();head.click();}});
+});
+
+/* FILTROS DE APRENDIZADOS */
+const lb=document.querySelectorAll('#learnFilters .filter-btn');
+lb.forEach(btn=>btn.addEventListener('click',()=>{
+  lb.forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+  const f=btn.dataset.filter;
+  document.querySelectorAll('#learnList .cal-card').forEach(c=>c.classList.toggle('hide',!(f==='todos'||c.dataset.type===f)));
+}));
+
+renderGrid(); bindInputs(document); bindHover(document); updateCalcs();
+</script>
+</body>
+</html>
